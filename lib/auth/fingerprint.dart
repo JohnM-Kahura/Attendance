@@ -1,4 +1,5 @@
 
+import 'package:attendance/config/global_colors.dart';
 import 'package:attendance/home/home.dart';
 import 'package:attendance/utils/local_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,8 @@ class _FingerPrintState extends State<FingerPrint> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+     backgroundColor:authThemeColor,
     );
   }
 }
