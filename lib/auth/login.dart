@@ -1,3 +1,4 @@
+import 'package:attendance/auth/fingerprint.dart';
 import 'package:attendance/config/global_colors.dart';
 import 'package:attendance/widget/social.dart';
 import 'package:attendance/widget/textfield.dart';
@@ -93,7 +94,7 @@ class _LoginState extends State<Login> {
                 ),
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Container()),
+                  MaterialPageRoute(builder: (context) => const  FingerPrint()),
                 ),
                 child: Text(
                   'Don\'t have account?',
