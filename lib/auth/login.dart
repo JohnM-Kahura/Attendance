@@ -1,5 +1,7 @@
 import 'package:attendance/auth/fingerprint.dart';
 import 'package:attendance/config/global_colors.dart';
+import 'package:attendance/home/home.dart';
+import 'package:attendance/utils/local_auth.dart';
 import 'package:attendance/widget/social.dart';
 import 'package:attendance/widget/textfield.dart';
 import 'package:flutter/material.dart';
@@ -7,16 +9,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
-  const Login({ Key? key }) : super(key: key);
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController emailController=TextEditingController();
-  TextEditingController idController=TextEditingController();
-  TextEditingController passwordController=TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController idController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               Container(
-                margin: const  EdgeInsets.only(top: 15),
-                
+                margin: const EdgeInsets.only(top: 15),
               ),
               Center(
                 child: Text(
@@ -92,10 +93,18 @@ class _LoginState extends State<Login> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const  FingerPrint()),
-                ),
+                onPressed: () async {
+                  final isAuthenticated = await LocalAuthApi.authenticate();
+                  if (isAuthenticated) {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const Home()));
+                  }
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const FingerPrint()),
+                  // );
+                },
                 child: Text(
                   'Don\'t have account?',
                   style: GoogleFonts.montserrat(
