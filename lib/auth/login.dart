@@ -77,10 +77,16 @@ class _LoginState extends State<Login> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(buttonColor),
                 ),
-                onPressed: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Container()),
-                ),
+                onPressed: () async {
+final isAuthenticated =await LocalAuthApi.authenticate();
+    if(isAuthenticated){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const Home()));
+    }
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => Home()),
+                  // );
+                },
                 child: Text(
                   'Log in',
                   style: GoogleFonts.montserrat(
@@ -96,7 +102,7 @@ class _LoginState extends State<Login> {
                 onPressed: () async {
                   final isAuthenticated = await LocalAuthApi.authenticate();
                   if (isAuthenticated) {
-                    Navigator.of(context).pushReplacement(
+                    Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => const Home()));
                   }
                   // Navigator.push(
