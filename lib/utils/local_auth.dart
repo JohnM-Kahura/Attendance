@@ -24,3 +24,4 @@ class LocalAuthApi {
    }
   }
 }
+// set up firebase auth
