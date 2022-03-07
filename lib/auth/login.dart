@@ -102,8 +102,12 @@ final isAuthenticated =await LocalAuthApi.authenticate();
                 onPressed: () async {
                   final isAuthenticated = await LocalAuthApi.authenticate();
                   if (isAuthenticated) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Home()));
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (context) => const Home()));
+                    print('****************auth sucesss*******');
+                  }
+                  if(!isAuthenticated){
+                    print('************failfalillsdalsf*******');
                   }
                   // Navigator.push(
                   //   context,
