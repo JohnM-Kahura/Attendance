@@ -14,11 +14,12 @@ class LocalAuthApi {
    try {
       return await _auth.authenticate(
       localizedReason: 'Scan Fingerprint to Authenticate',
-      biometricOnly: false,
-      useErrorDialogs: true,
-      stickyAuth: true,
+      biometricOnly: true,
+      // useErrorDialogs: true,
+      // stickyAuth: true,
     );
    } on PlatformException catch (e) {
+     print('***************printing exeption');
    print(e);
    return false;
    }
