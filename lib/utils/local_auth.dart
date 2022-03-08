@@ -19,7 +19,6 @@ class LocalAuthApi {
       // stickyAuth: true,
     );
    } on PlatformException catch (e) {
-     print('***************printing exeption');
    print(e);
    return false;
    }
